@@ -30,7 +30,8 @@
             <ul class="nav">
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
               <li class="scroll-to-section"><a href="#services">Services</a></li>
-              <li class="scroll-to-section"><a href="#about">About</a></li>
+              <li class="scroll-to-section"><a href="#">About</a></li>
+          {{-- {{ dd() }} --}}
               <li class="scroll-to-section"><a href="#pricing">Pricing</a></li>
               <li class="scroll-to-section"><a href="#newsletter">Newsletter</a></li>
               <li><div class="gradient-button"><a id="modal_trigger" href="#modal">Sign In Now</a></div></li> 
@@ -80,23 +81,17 @@
 
         <!-- Username & Password Login form -->
         <div class="user_login">
-            <form>
+            <form action="{{ route('admin.login') }}" method="post">
+              @csrf
                 <label>Email / Username</label>
-                <input type="text" />
+                <input name="email" type="text" />
                 <br />
-
                 <label>Password</label>
-                <input type="password" />
+                <input name="password" type="password" />
                 <br />
-
-                <div class="checkbox">
-                    <input id="remember" type="checkbox" />
-                    <label for="remember">Remember me on this computer</label>
-                </div>
-
                 <div class="action_btns">
                     <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-                    <div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
+                    <div class="one_half last"><button type="submit" href="#" class="btn btn_red">Login</button></div>
                 </div>
             </form>
 
