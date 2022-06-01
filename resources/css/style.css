@@ -1,0 +1,15 @@
+#title {
+    position: absolute;
+    width: 181px;
+    height: 95px;
+    left: 195px;
+    top: 100px;
+
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 95px;
+
+    color: #20175F;
+}
