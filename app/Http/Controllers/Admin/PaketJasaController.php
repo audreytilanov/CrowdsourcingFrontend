@@ -6,18 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
-class SkillController extends Controller
+class PaketJasaController extends Controller
 {
     public function index(Request $request){
         $user = $request->session()->get('userSession');
         
-        $response = Http::withToken($user['token'])->get('https://crowdsourcing.usf.my.id/api/admin/skill');
+        $response = Http::withToken($user['token'])->get('https://crowdsourcing.usf.my.id/api/admin/paketjasa');
         $responseJSON = json_decode($response->getBody(), true);
-        return view('admin.skill.index', compact('responseJSON'));
+        return view('admin.paketjasa.index', compact('responseJSON'));
     }
 
     public function create(){
-        return view('admin.skill.create');        
+        return view('admin.paketjasa.create');        
     }
 
     public function store(Request $request){
@@ -27,14 +27,14 @@ class SkillController extends Controller
             'deskripsi' => 'required',
         ]);
 
-        $response = Http::withToken($user['token'])->post('https://crowdsourcing.usf.my.id/api/admin/skill/create', [
+        $response = Http::withToken($user['token'])->post('https://crowdsourcing.usf.my.id/api/admin/paketjasa/create', [
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi
         ]);
         $responseJSON = json_decode($response->getBody(), true);
         // dd($responseJSON);
         if($responseJSON['success'] == true){
-            return redirect()->route('admin.skill.index');
+            return redirect()->route('admin.paketjasa.index');
         }
 
         return redirect('/');
@@ -43,10 +43,10 @@ class SkillController extends Controller
     public function edit($id, Request $request){
         $user = $request->session()->get('userSession');
         
-        $response = Http::withToken($user['token'])->get('https://crowdsourcing.usf.my.id/api/admin/skill/edit/'.$id);
+        $response = Http::withToken($user['token'])->get('https://crowdsourcing.usf.my.id/api/admin/paketjasa/edit/'.$id);
         $responseJSON = json_decode($response->getBody(), true);
         // dd($responseJSON['data']);
-        return view('admin.skill.edit', compact('responseJSON'));
+        return view('admin.paketjasa.edit', compact('responseJSON'));
     }
 
     public function update($id, Request $request){
@@ -56,14 +56,14 @@ class SkillController extends Controller
             'deskripsi' => 'required',
         ]);
 
-        $response = Http::withToken($user['token'])->post('https://crowdsourcing.usf.my.id/api/admin/skill/edit/'.$id, [
+        $response = Http::withToken($user['token'])->post('https://crowdsourcing.usf.my.id/api/admin/paketjasa/edit/'.$id, [
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi
         ]);
         $responseJSON = json_decode($response->getBody(), true);
         // dd($responseJSON);
         if($responseJSON['success'] == true){
-            return redirect()->route('admin.skill.index');
+            return redirect()->route('admin.paketjasa.index');
         }
 
         return redirect('/');
@@ -72,11 +72,11 @@ class SkillController extends Controller
     public function delete($id, Request $request){
         $user = $request->session()->get('userSession');
 
-        $response = Http::withToken($user['token'])->post('https://crowdsourcing.usf.my.id/api/admin/skill/delete/'.$id);
+        $response = Http::withToken($user['token'])->post('https://crowdsourcing.usf.my.id/api/admin/paketjasa/delete/'.$id);
         $responseJSON = json_decode($response->getBody(), true);
         // dd($responseJSON);
         if($responseJSON['success'] == true){
-            return redirect()->route('admin.skill.index');
+            return redirect()->route('admin.paketjasa.index');
         }
 
         return redirect('/');

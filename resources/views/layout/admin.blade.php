@@ -54,6 +54,8 @@
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="{{ route('admin.kategori.index') }}"><i class="ti-harddrives"></i> Kategori </a></li>
+                            <li><a href="{{ route('admin.skill.index') }}"><i class="ti-harddrives"></i> Skill </a></li>
+                            <li><a href="{{ route('admin.paketjasa.index') }}"><i class="ti-harddrives"></i> Paket Jasa </a></li>
                             {{-- <li><a href="{{ route('admin.couriers.index') }}"><i class="ti-car"></i> Kurir</a></li>
                             <li><a href="{{ route('admin.province.index') }}"><i class="ti-flag-alt"></i> Provinsi</a></li>
                             <li><a href="{{ route('admin.account.index') }}"><i class="ti-user"></i> Admin</a></li> --}}

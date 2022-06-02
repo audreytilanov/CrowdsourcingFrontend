@@ -14,6 +14,7 @@ class KategoriController extends Controller
         
         $response = Http::withToken($user['token'])->get('https://crowdsourcing.usf.my.id/api/admin/kategori');
         $responseJSON = json_decode($response->getBody(), true);
+        // dd($responseJSON);
         return view('admin.kategori.index', compact('responseJSON'));
     }
 
