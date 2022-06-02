@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\JasaController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\PaketJasaController;
 use App\Http\Controllers\Admin\SkillController;
@@ -42,6 +43,16 @@ Route::prefix('admin')->name('admin.')->group(function(){
             Route::get('/edit/{id}',[PaketJasaController::class, 'edit'])->name('edit');
             Route::post('/edit/{id}',[PaketJasaController::class, 'update'])->name('update');
             Route::post('/delete/{id}',[PaketJasaController::class, 'delete'])->name('delete');
+        });
+
+        // JASA
+        Route::prefix('jasa')->name('jasa.')->group(function(){
+            Route::get('/',[JasaController::class, 'index'])->name('index');
+            Route::get('/create',[JasaController::class, 'create'])->name('create');
+            Route::post('/create',[JasaController::class, 'store'])->name('store');
+            Route::get('/edit/{id}',[JasaController::class, 'edit'])->name('edit');
+            Route::post('/edit/{id}',[JasaController::class, 'update'])->name('update');
+            Route::post('/delete/{id}',[JasaController::class, 'delete'])->name('delete');
         });
     });
 });
