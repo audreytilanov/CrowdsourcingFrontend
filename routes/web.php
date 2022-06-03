@@ -5,12 +5,33 @@ use App\Http\Controllers\Admin\JasaController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\KategoriController;
+use App\Http\Controllers\User\UserLoginController;
 use App\Http\Controllers\Admin\PaketJasaController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\User\TransactionController;
 use App\Http\Controllers\Admin\RincianJasaController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::prefix('user')->name('user.')->group(function(){
+
+    Route::post('/login', [UserLoginController::class, 'proses'])->name('login');
+    Route::post('/register', [UserLoginController::class, 'register'])->name('user.register');
+    Route::get('/dashboard',[UserLoginController::class, 'dashboard'])->name('dashboard');
+
+    Route::middleware(['checktoken'])->group(function(){
+        Route::get('/logout', [LoginController::class, 'logout'])->name('user.logout');
+        
+        Route::prefix('transaksi')->name('transaksi.')->group(function(){
+            Route::get('/',[TransactionController::class, 'index'])->name('index');
+            Route::get('/{id}',[TransactionController::class, 'detail'])->name('detail');
+            Route::post('/buktipembayaran/{id}',[TransactionController::class, 'buktiPembayaran'])->name('buktipembayaran');
+            Route::post('/create',[TransactionController::class, 'create'])->name('create');
+            
+        });
+        
+    });
 });
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::post('/login', [AdminLoginController::class, 'proses'])->name('login');

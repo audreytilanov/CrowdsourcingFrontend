@@ -19,8 +19,10 @@ class CheckToken
     public function handle(Request $request, Closure $next)
     {
         $user = $request->session()->get('userSession');
-        if(!empty($user)){
+        $customer = $request->session()->get('session');
+        if(!empty($user) || !empty($customer)){
             $response = Http::withToken($user['token'])->get('https://crowdsourcing.usf.my.id/api/admin/kategori');
+            $response = Http::withToken($user['token'])->get('https://crowdsourcing.usf.my.id/api/transaksi');
 
             if($response->failed()){
                 return redirect(('/'));

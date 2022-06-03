@@ -44,25 +44,11 @@
                     <div class="logo"><a href="index.html">
                             <!-- <img src="adminassets/assets/images/logo.png" alt="" /> --><span>Petshop</span></a></div>
                     <li class="label">Main</li>
-                    <li><a href="{{ route('admin.dashboard') }}"><i class="ti-home"></i> Dashboard</a>
+                    <li><a href="{{ route('user.dashboard') }}"><i class="ti-home"></i> Dashboard</a>
                     </li>
-                    <li><a href="{{ route('admin.pegawai.index') }}"><i class="ti-user"></i> Pegawai</a>
+                    <li><a href="{{ route('user.transaksi.index') }}"><i class="ti-bag"></i> Transaksi</a>
                     </li>
-                    <li class="label">Master Data</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid3"></i> Master Data <span
-                                class="badge badge-primary">4</span> <span
-                                class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{{ route('admin.kategori.index') }}"><i class="ti-harddrives"></i> Kategori </a></li>
-                            <li><a href="{{ route('admin.skill.index') }}"><i class="ti-harddrives"></i> Skill </a></li>
-                            <li><a href="{{ route('admin.paketjasa.index') }}"><i class="ti-harddrives"></i> Paket Jasa </a></li>
-                            <li><a href="{{ route('admin.jasa.index') }}"><i class="ti-harddrives"></i> Jasa </a></li>
-                            <li><a href="{{ route('admin.rincianjasa.index') }}"><i class="ti-harddrives"></i> Rincian Jasa </a></li>
-                            {{-- <li><a href="{{ route('admin.couriers.index') }}"><i class="ti-car"></i> Kurir</a></li>
-                            <li><a href="{{ route('admin.province.index') }}"><i class="ti-flag-alt"></i> Provinsi</a></li>
-                            <li><a href="{{ route('admin.account.index') }}"><i class="ti-user"></i> Admin</a></li> --}}
-                        </ul>
-                    </li>
+                    
                     {{-- 
                     <li class="label">Pengadaan Barang</li>
                     <li><a href="{{ route('admin.product.index') }}"><i class="ti-bag"></i> Produk </a>

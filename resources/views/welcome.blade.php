@@ -100,28 +100,19 @@
 
         <!-- Register Form -->
         <div class="user_register">
-            <form>
-                <label>Full Name</label>
-                <input type="text" />
-                <br />
-
-                <label>Address</label>
-                <input type="text" />
-                <br />
-
-                <label>Email Address</label>
-                <input type="email" />
-                <br />
-
-                <label>Password</label>
-                <input type="password" />
-                <br />
-
-                <div class="action_btns">
-                    <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-                    <div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
-                </div>
-            </form>
+          <form action="{{ route('user.login') }}" method="post">
+            @csrf
+              <label>Email / Username</label>
+              <input name="email" type="text" />
+              <br />
+              <label>Password</label>
+              <input name="password" type="password" />
+              <br />
+              <div class="action_btns">
+                  <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+                  <div class="one_half last"><button type="submit" href="#" class="btn btn_red">Login</button></div>
+              </div>
+          </form>
         </div>
     </section>
 </div>
