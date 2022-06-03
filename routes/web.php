@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\JasaController;
+use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\PaketJasaController;
-use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\RincianJasaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,5 +56,25 @@ Route::prefix('admin')->name('admin.')->group(function(){
             Route::post('/edit/{id}',[JasaController::class, 'update'])->name('update');
             Route::post('/delete/{id}',[JasaController::class, 'delete'])->name('delete');
         });
+
+        Route::prefix('pegawai')->name('pegawai.')->group(function(){
+            Route::get('/',[PegawaiController::class, 'index'])->name('index');
+            Route::get('/create',[PegawaiController::class, 'create'])->name('create');
+            Route::post('/create',[PegawaiController::class, 'store'])->name('store');
+            Route::get('/edit/{id}',[PegawaiController::class, 'edit'])->name('edit');
+            Route::post('/edit/{id}',[PegawaiController::class, 'update'])->name('update');
+            Route::post('/delete/{id}',[PegawaiController::class, 'delete'])->name('delete');
+        });
+
+        Route::prefix('rincianjasa')->name('rincianjasa.')->group(function(){
+            Route::get('/',[RincianJasaController::class, 'index'])->name('index');
+            Route::get('/create/{id}',[RincianJasaController::class, 'create'])->name('create');
+            Route::post('/create/{id}',[RincianJasaController::class, 'store'])->name('store');
+            Route::get('/edit/{id}',[RincianJasaController::class, 'edit'])->name('edit');
+            Route::post('/edit/{id}',[RincianJasaController::class, 'update'])->name('update');
+            Route::post('/delete/{id}',[RincianJasaController::class, 'delete'])->name('delete');
+        });
+
+        
     });
 });
